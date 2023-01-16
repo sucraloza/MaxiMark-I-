@@ -1,0 +1,6 @@
+#ifndef TACHOGRAPH_CONTROLS_H_INCLUDED
+#define TACHOGRAPH_CONTROLS_H_INCLUDED
+
+extern void Tachograph_Set_Rpm(sint16 s16_Rpm);
+
+#endif // TACHOGRAPH_CONTROLS_H_INCLUDED

@@ -1,0 +1,28 @@
+[X] Redefinir Pines GPIO
+[X] Variables de control Pines GPIO
+[X] Modulo SCU
+[] Linea CAN Inv
+[] Linea CAN Bat
+[] Linea CAN Tacograph
+[] Linea CAN Tablero
+[] Linea CAN Vision
+[] Linea CAN Fusi
+[] Linea CAN Monitoring
+[] Linea CAN Telemetria
+[] Botonera de cambios
+[] Implementacion SCU
+[] Implementacion Direccion
+[] Implementacion TPDU
+[] Implementacion BTMS
+[] Implementacion ABS
+[] Revisar Compatiblilidad Tablero
+[] Privatizacion Inv
+[] Privatizacion Bat
+[] Privatizacion Taograph
+[] Privatizacion FUSI
+[] Privatizacion Telemetria
+[] Privatizacion Monitoring
+[] Privatizacion Vision
+[] Actualizar GPIOs de monitoring.dbc
+[] Actualizar System Status de monitoring.dbc
+[] Logica de la chapa
