@@ -1,0 +1,17 @@
+#ifndef PDU_DEFS_H_INCLUDED
+#define PDU_DEFS_H_INCLUDED
+
+#define PDU_CIRCUIT_OPEN            0x0
+#define PDU_CIRCUIT_PRECHARGE       0x3
+#define PDU_CIRCUIT_BYPASS          0x5
+#define PDU_CIRCUIT_CLOSE           0x6
+#define PDU_CIRCUIT_DISENGAGE       0x9
+#define PDU_CIRCUIT_DISCHARGE       0xA
+#define PDU_CIRCUIT_WELD_FAULT      0xF
+
+#define PDU_FAULT_OFF 0x0
+#define PDU_FAULT_ON  0x3
+
+#define PDU_MIN_OPERATIONAL_VOLTAGE_V   590u
+
+#endif // PDU_DEFS_H_INCLUDED
