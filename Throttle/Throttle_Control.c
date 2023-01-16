@@ -1,5 +1,6 @@
 #include "OS_Defs.h"
 
+// THIS A NEW BRANCH BRO, CHECK IT
 void Throttle_Conversion(uint16 IN_A,uint16 IN_B)
 {
     uint32 u32_Throttle_Value=0;
@@ -118,7 +119,7 @@ float32 Throttle_Hysteresis(float f32_in){
         x_os_mutex_release(&t_Mutex_Throttle);
         return f32_in;
     }
-    // Comment to appear
+    
     st_Throttle.f32_Post_Hysteresis_Value_pu = st_Throttle.st_Hysteresis.f32_Preveous_Throttle_pu;
     x_os_mutex_release(&t_Mutex_Throttle);
     return st_Throttle.st_Hysteresis.f32_Preveous_Throttle_pu;
