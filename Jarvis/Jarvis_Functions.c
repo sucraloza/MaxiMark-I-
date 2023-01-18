@@ -53,8 +53,8 @@ uint8 Jarvis_get_Button_Pedal_Break(void)
 }
 uint8 Jarvis_get_Button_Hand_Break(void)
 {
-    // return st_Jarvis.st_GPIO.un_Flags.bits.b1_Hand_Break;
-    return un_Tachograph_RxVars.bits.b1_Hand_Break;
+    return st_Jarvis.st_GPIO.un_Flags.bits.b1_Hand_Break;
+    // return un_Tachograph_RxVars.bits.b1_Hand_Break;
 }
 uint8 Jarvis_get_PTC_Operation(void)
 {

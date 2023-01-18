@@ -161,8 +161,8 @@ uint8 GPIO_get_Emergency(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Emergency
 uint8 GPIO_get_Key_Acc(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Key_Accesory == DS_ON); }
 uint8 GPIO_get_Key_Start(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Key_Start == DS_ON); }
 uint8 GPIO_get_Charge_Wakeup(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Charge_Wakeup == DS_ON); }
-// uint8 GPIO_get_Cooling_Tank(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Cooling_Tank == DS_ON); } // 
-uint8 GPIO_get_Cooling_Tank(void){ return (un_Tachograph_RxVars.bits.b2_Coolant_Level == DS_ON); }
+uint8 GPIO_get_Cooling_Tank(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Cooling_Tank == DS_ON); } // 
+// uint8 GPIO_get_Cooling_Tank(void){ return (un_Tachograph_RxVars.bits.b2_Coolant_Level == DS_ON); }
 uint8 GPIO_get_Heating_Tank(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Heating_Tank == DS_ON); }
 // uint8 GPIO_get_Heating_Tank(void){ return (TRUE); }
 uint8 GPIO_get_Steering_Tank(void){ return (st_GPIO.un_Ins_Digital.bits.b2_Steering_Tank == DS_ON); }
