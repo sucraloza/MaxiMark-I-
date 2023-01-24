@@ -177,8 +177,6 @@ void MON_TX_Debug(void){
     t_Msg.t_Id.u8_Xtd = TRUE;
     t_Msg.u8_Dlc = 8;
 
-    
-
     /* T_x_can_bus_status CAN4status;
     sint16 s16_CAN4err;
     s16_CAN4err = x_can_bus_get_status(X_CAN_BUS_04, &CAN4status);
@@ -196,7 +194,6 @@ void MON_TX_Debug(void){
     t_Msg.au8_Data[5] = debuggeo.u8_debug1;
     t_Msg.au8_Data[6] = debuggeo.u8_debug2;
     t_Msg.au8_Data[7] = 0;
-
 
     x_can_obj_send_msg(mpv_MsgObjTx_Monitoring, &t_Msg);
 }
@@ -375,13 +372,13 @@ void MON_RX_GPIO_Command(void)
     else{
         st_GPIO.un_Outs_PDU.bits.b2_PDU_Contactor_AC = DS_ON;
     }
-
-/*      if ((t_Monitoring_Msg.au8_Data[1]& 0x08) == 0x00){
-        st_GPIO.un_Outs_PDU.bits.b2_PDU_Contactor_Steering = DS_OFF;
+    // PDU_cmd_contactor_BTMS
+     if ((t_Monitoring_Msg.au8_Data[1]& 0x08) == 0x00){
+        st_GPIO.un_Outs_PDU.bits.b2_PDU_Contactor_BTMS = DS_OFF;
     }
     else{
-        st_GPIO.un_Outs_PDU.bits.b2_PDU_Contactor_Steering = DS_ON;
-    }  */
+        st_GPIO.un_Outs_PDU.bits.b2_PDU_Contactor_BTMS = DS_ON;
+    } 
 
     if ((t_Monitoring_Msg.au8_Data[1]& 0x10) == 0x00){
         st_GPIO.un_Outs_Gen.bits.b2_HVIL = DS_OFF;

@@ -227,10 +227,14 @@ void GPIO_Update_PDU_Outputs(void){
         case DS_OFF: x_out_set_value(GPIO_PDU_BTMS,X_OFF); break;
         case DS_ON: x_out_set_value(GPIO_PDU_BTMS,X_ON); break;
     }
+    // These two options work for keeping GPIO_PDU_AC contact constantly turned on
+    x_out_set_value(GPIO_PDU_AC,X_ON);
+    //
+    /* GPIO_set_PDU_Contactor_AC(DS_ON);
     switch (st_GPIO.un_Outs_PDU.bits.b2_PDU_Contactor_AC){
         case DS_OFF: x_out_set_value(GPIO_PDU_AC,X_OFF); break;
         case DS_ON: x_out_set_value(GPIO_PDU_AC,X_ON); break;
-    }
+    } */
 }
 
 void GPIO_Update_Generic_Outputs(void){

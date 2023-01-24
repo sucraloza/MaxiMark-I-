@@ -46,7 +46,7 @@ typedef struct{
 }St_Throttle_Ramp;
 
 #define THROTTLE_RAMPA_INIT(v)         \
-    v.f32_Step_Up = 0.004f;            \
+    v.f32_Step_Up = 0.016f;            \
     v.f32_Step_Down = 0.1f;            \
     v.f32_Buffer = 0.0f;               \
     v.u8_Counter = 0;                  \

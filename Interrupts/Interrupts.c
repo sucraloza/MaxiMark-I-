@@ -126,9 +126,9 @@ void vTask_Inputs(void *opv_Arg)
                 MON_TX_Int_Ok(3, u8_rol); // Send Live Signal
                 u8_rol++;
                 u8_IsrCounter = 0;
-                Tacho_eval();
             }
             System_Input_Update();
+            Tacho_eval();
         }
     }
 }
