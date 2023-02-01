@@ -255,11 +255,7 @@ void State_Drive(void){
 
 void State_Charge(void){
     System_set_Charge_Lock(TRUE);
-    // Power off compressor
-    // no pressure reading is done without powered Tachograph
-    SCU_set_DCU_Enable(FALSE);
-    SCU_set_DCU_Speed_rpm(0);
-    //
+    
     SCU_set_PSU_Enable(TRUE);
     SCU_set_PSU_Voltage_V(PSU_VOLTAGE);
     Cooling_Set_Enable_Pump(TRUE);

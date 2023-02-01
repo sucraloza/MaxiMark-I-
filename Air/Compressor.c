@@ -141,16 +141,16 @@ void Compressor_State_Disable(void)
 
     if((System_get_State() == ECU_STATE_CHARGE) && System_get_Charge_State_Detected())
     {
-        // No pressure reading is performed while in charging state
-        /* t_Compressor.u8_State = COMPRESSOR_STATE_COMPRESOR_OK_HEAT;
-        t_Compressor.u32_Timeout = Timeout_Set_ms(COMPRESSOR_OK_TIMEOUT_MS); */
+        // No pressure reading is performed while charging
+        t_Compressor.u8_State = COMPRESSOR_STATE_OFF;
         return;
     }
 }
 
 void Compressor_State_Compresor_Ok(void)
 {
-    t_Compressor.u8_Charge_Air = TRUE;
+    // Este estado se puede omitir, derivando desde DISABLE a STANDBY de inmediato
+    t_Compressor.u8_Charge_Air = FALSE;
 
     if(System_get_State() == ECU_STATE_POWER_OFF)
     {
@@ -158,25 +158,20 @@ void Compressor_State_Compresor_Ok(void)
         return;
     }
 
-    if(t_Compressor.s16_Speed_rpm > COMPRESSOR_OFF_SPEED_RPM)
+    if(t_Compressor.u16_Air_Pressure_mbar < COMPRESSOR_MIN_PRESSURE_MBAR)
     {
         t_Compressor.u8_State = COMPRESSOR_STATE_START;
-        t_Compressor.u8_Compresor_Ok = DS_ON;
+        t_Compressor.u32_Timeout = Timeout_Set_ms(COMPRESSOR_OK_TIMEOUT_MS);
         return;
     }
-
-    if(Timeout_Check(t_Compressor.u32_Timeout))
-    {
-        t_Compressor.u8_State = COMPRESSOR_STATE_FAULT;
-        return;
-    }
-
 
     if(t_Compressor.u8_Fault_Motor == DS_ON)
     {
         t_Compressor.u8_State = COMPRESSOR_STATE_FAULT;
         return;
     }
+
+    t_Compressor.u8_State = COMPRESSOR_STATE_STANDBY;  
 }
 
 void Compressor_State_Start(void)
@@ -189,19 +184,25 @@ void Compressor_State_Start(void)
         return;
     }
 
-    if(t_Compressor.u16_Air_Pressure_mbar < COMPRESSOR_MIN_PRESSURE_MBAR)
+    if(t_Compressor.s16_Speed_rpm > COMPRESSOR_OFF_SPEED_RPM)
     {
         t_Compressor.u8_State = COMPRESSOR_STATE_ON;
+        t_Compressor.u8_Compresor_Ok = DS_ON;
         t_Compressor.u32_Timeout = Timeout_Set_ms(COMPRESSOR_TIMEOUT_MS);
         return;
     }
-    else
+
+    if(Timeout_Check(t_Compressor.u32_Timeout))
     {
-        t_Compressor.u8_State = COMPRESSOR_STATE_BLAST;
-        t_Compressor.u32_Timeout = Timeout_Set_ms(COMPRESSOR_START_BLAST_MS);
+        t_Compressor.u8_State = COMPRESSOR_STATE_FAULT;
         return;
     }
 
+    if(t_Compressor.u8_Fault_Motor == DS_ON)
+    {
+        t_Compressor.u8_State = COMPRESSOR_STATE_FAULT;
+        return;
+    }
 }
 
 void Compressor_State_On(void)
